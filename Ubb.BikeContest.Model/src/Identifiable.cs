@@ -1,12 +1,12 @@
 ﻿namespace Ubb.BikeContest.Model;
 
-public class Identifiable<TID>
+public class Identifiable<TId>
 {
-    private TID id;
+    private TId? _id;
 
-    public TID Id
+    public TId Id
     {
-        get => id;
-        protected set => id = value;
+        get => _id ?? throw new ArgumentNullException();
+        protected set => _id = value;
     }
 }

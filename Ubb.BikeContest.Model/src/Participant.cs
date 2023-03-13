@@ -36,7 +36,7 @@ public class Participant : Identifiable<long>
     public Team Team
     {
         get => _team ?? throw new ArgumentNullException();
-        set => _team = value ?? throw new ArgumentNullException(nameof(value));
+        set => _team = value;
     }
 }
     
