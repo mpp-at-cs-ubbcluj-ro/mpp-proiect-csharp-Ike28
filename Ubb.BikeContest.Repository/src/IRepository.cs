@@ -2,15 +2,15 @@
 
 namespace Ubb.BikeContest.Repository;
 
-public interface IRepository<TID, TEntity> where TEntity : Ubb.BikeContest.Model.Identifiable<TID>
+public interface IRepository<TId, TEntity> where TEntity : Ubb.BikeContest.Model.Identifiable<TId>
 {
-    TID Get(TID id);
+    TEntity Get(TId id);
 
     Collection<TEntity> Read();
 
     void Add(TEntity newEntity);
 
-    void Delete(TID id);
+    void Delete(TId id);
 
     void Update(TEntity updatedEntity);
 }

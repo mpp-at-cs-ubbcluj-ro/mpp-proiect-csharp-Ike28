@@ -2,8 +2,8 @@
 
 public class RaceEntry : Identifiable<long>
 {
-    private readonly Participant _participant;
     private readonly Race _race;
+    private readonly Participant _participant;
 
     public RaceEntry(long id, Participant participant, Race race)
     {
