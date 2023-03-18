@@ -2,25 +2,13 @@
 
 public class Race : Identifiable<long>
 {
-    private string _name;
-    private int _engineCapacity;
-
-    public Race(long id, string name, int engineCapacity)
+    public Race(string name, int engineCapacity)
     {
-        Id = id;
-        _name = name;
-        _engineCapacity = engineCapacity;
+        Name = name;
+        EngineCapacity = engineCapacity;
     }
 
-    public string Name
-    {
-        get => _name;
-        set => _name = value;
-    }
+    public string Name { get; set; }
 
-    public int EngineCapacity
-    {
-        get => _engineCapacity;
-        set => _engineCapacity = value;
-    }
+    public int EngineCapacity { get; set; }
 }
