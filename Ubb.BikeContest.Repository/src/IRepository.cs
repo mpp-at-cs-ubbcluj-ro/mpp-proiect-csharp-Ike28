@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections;
+using System.Collections.ObjectModel;
 
 namespace Ubb.BikeContest.Repository;
 
@@ -6,7 +7,7 @@ public interface IRepository<TId, TEntity> where TEntity : Ubb.BikeContest.Model
 {
     TEntity Get(TId id);
 
-    Collection<TEntity> Read();
+    IEnumerable Read();
 
     void Add(TEntity newEntity);
 

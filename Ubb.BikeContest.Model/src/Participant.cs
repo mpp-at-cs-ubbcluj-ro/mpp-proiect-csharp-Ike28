@@ -15,6 +15,6 @@ public class Participant : Identifiable<long>
 
     public int EngineCapacity { get; set; }
 
-    public Team Team { get; set; }
+    public long? TeamId { get; set; }
 }
     
