@@ -2,25 +2,16 @@
 
 public class User : Identifiable<long>
 {
-    private string _username;
-    private string _fullName;
-
-    public User(long id, string username, string fullName)
+    public User(string username, string fullName, string password)
     {
-        Id = id;
-        _username = username;
-        _fullName = fullName;
+        Username = username;
+        FullName = fullName;
+        Password = password;
     }
 
-    public string Username
-    {
-        get => _username;
-        set => _username = value;
-    }
+    public string Username { get; set; }
 
-    public string FullName
-    {
-        get => _fullName;
-        set => _fullName = value;
-    }
+    public string FullName { get; set; }
+    
+    public string Password { get; set; }
 }

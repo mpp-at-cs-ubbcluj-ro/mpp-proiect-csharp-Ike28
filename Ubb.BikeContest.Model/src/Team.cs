@@ -2,17 +2,10 @@
 
 public class Team : Identifiable<long>
 {
-    private string _name;
-
-    public Team(long id, string name)
+    public Team(string name)
     {
-        Id = id;
-        _name = name;
+        Name = name;
     }
     
-    public string Name
-    {
-        get => _name;
-        set => _name = value;
-    }
+    public string Name { get; set; }
 }
