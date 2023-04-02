@@ -43,7 +43,7 @@ public class UserDbRepository : IUserRepository
         return null;
     }
 
-    public IEnumerable FindAll()
+    public IEnumerable<User> FindAll()
     {
         Log.InfoFormat("Entering Read");
         var connection = DbUtils.GetConnection(_props);
@@ -165,7 +165,40 @@ public class UserDbRepository : IUserRepository
         Log.InfoFormat("Exiting GetByUsername with value {0}", null);
         return null;
     }
-    
+
+    public User GetByUsernameAndPassword(string username, string password)
+    {
+        Log.InfoFormat("Entering GetByUsernameAndPassword with value {0}", username);
+        var connection = DbUtils.GetConnection(_props);
+
+        using (var command = connection.CreateCommand())
+        {
+            command.CommandText = "SELECT id,username,fullName,password FROM users WHERE username=@username " +
+                                  "AND password=@password";
+            var paramUsername = command.CreateParameter();
+            paramUsername.ParameterName = "@username";
+            paramUsername.Value = username;
+            command.Parameters.Add(paramUsername);
+            
+            var paramPassword = command.CreateParameter();
+            paramPassword.ParameterName = "@password";
+            paramPassword.Value = password;
+            command.Parameters.Add(paramPassword);
+
+            using (var dataReader = command.ExecuteReader())
+            {
+                if (dataReader.Read())
+                {
+                    User user = Extract(dataReader);
+                    Log.InfoFormat("Exiting GetByUsernameAndPassword with value {0}", user);
+                    return user;
+                }
+            }
+        }
+        Log.InfoFormat("Exiting GetByUsernameAndPassword with value {0}", null);
+        return null;
+    }
+
     private User Extract(IDataReader dataReader)
     {
         var id = dataReader.GetInt64(0);

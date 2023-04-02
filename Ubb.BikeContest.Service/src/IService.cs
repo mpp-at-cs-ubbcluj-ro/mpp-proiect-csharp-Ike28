@@ -1,12 +1,13 @@
 ﻿using System.Collections;
+using Ubb.BikeContest.Model;
 
-namespace Ubb.BikeContest.Repository;
+namespace Ubb.BikeContest.Service;
 
-public interface IRepository<TId, TEntity> where TEntity : Model.Identifiable<TId>
+public interface IService<TId, TEntity> where TEntity : Identifiable<TId>
 {
     TEntity FindById(TId id);
 
-    IEnumerable<TEntity> FindAll();
+    IEnumerable FindAll();
 
     void Save(TEntity newEntity);
 

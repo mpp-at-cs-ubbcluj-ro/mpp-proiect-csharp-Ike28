@@ -43,7 +43,7 @@ public class TeamDbRepository : ITeamRepository
         return null;
     }
 
-    public IEnumerable FindAll()
+    public IEnumerable<Team> FindAll()
     {
         Log.InfoFormat("Entering Read");
         IDbConnection connection = DbUtils.GetConnection(_props);

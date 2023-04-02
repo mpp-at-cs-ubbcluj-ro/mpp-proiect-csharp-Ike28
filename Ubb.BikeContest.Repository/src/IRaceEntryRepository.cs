@@ -5,5 +5,7 @@ namespace Ubb.BikeContest.Repository;
 
 public interface IRaceEntryRepository : IRepository<long, RaceEntry>
 {
-    IEnumerable GetEntriesByRace(long raceId);
+    IEnumerable<RaceEntry> GetEntriesByRace(long raceId);
+
+    IEnumerable<Race> GetRacesWhereNotRegisteredAndEngineCapacity(long participantId, int engineCapacity);
 }
