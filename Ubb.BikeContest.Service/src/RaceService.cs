@@ -24,7 +24,7 @@ public class RaceService : IRaceService
         return _raceRepository.FindById(id);
     }
 
-    public IEnumerable FindAll()
+    public IEnumerable<Race> FindAll()
     {
         return _raceRepository.FindAll();
     }

@@ -21,7 +21,7 @@ public class ParticipantService : IParticipantService
         return _participantRepository.FindById(id);
     }
 
-    public IEnumerable FindAll()
+    public IEnumerable<Participant> FindAll()
     {
         return _participantRepository.FindAll();
     }

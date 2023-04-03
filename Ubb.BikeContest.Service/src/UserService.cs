@@ -21,7 +21,7 @@ public class UserService : IUserService
         return _userRepository.FindById(id);
     }
 
-    public IEnumerable FindAll()
+    public IEnumerable<User> FindAll()
     {
         return _userRepository.FindAll();
     }

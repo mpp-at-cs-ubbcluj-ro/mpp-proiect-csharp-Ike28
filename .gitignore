@@ -1,4 +1,5 @@
 .idea
+.vs
 Ubb.BikeContest.Model/bin
 Ubb.BikeContest.Model/obj
 Ubb.BikeContest.Repository/bin

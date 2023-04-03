@@ -17,5 +17,5 @@ public class RaceDto
 
     public int EngineCapacity => _engineCapacity;
 
-    public int Participant => _participant;
+    public int Participants => _participant;
 }

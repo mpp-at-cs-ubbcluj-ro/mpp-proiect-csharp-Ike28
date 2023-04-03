@@ -21,7 +21,7 @@ public class TeamService : ITeamService
         return _teamRepository.FindById(id);
     }
 
-    public IEnumerable FindAll()
+    public IEnumerable<Team> FindAll()
     {
         return _teamRepository.FindAll();
     }

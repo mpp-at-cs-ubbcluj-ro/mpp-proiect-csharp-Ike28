@@ -7,7 +7,7 @@ public interface IService<TId, TEntity> where TEntity : Identifiable<TId>
 {
     TEntity FindById(TId id);
 
-    IEnumerable FindAll();
+    IEnumerable<TEntity> FindAll();
 
     void Save(TEntity newEntity);
 

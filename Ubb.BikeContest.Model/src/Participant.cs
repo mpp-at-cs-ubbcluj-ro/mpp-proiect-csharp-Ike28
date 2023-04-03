@@ -16,5 +16,10 @@ public class Participant : Identifiable<long>
     public int EngineCapacity { get; set; }
 
     public long? TeamId { get; set; }
+
+    public override string ToString()
+    {
+        return FirstName + " " + LastName;
+    }
 }
     
