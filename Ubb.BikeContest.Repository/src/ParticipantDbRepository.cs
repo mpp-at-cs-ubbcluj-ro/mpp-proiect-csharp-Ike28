@@ -43,7 +43,7 @@ public class ParticipantDbRepository : IParticipantRepository
         return null;
     }
 
-    public IEnumerable FindAll()
+    public IEnumerable<Participant> FindAll()
     {
         Log.InfoFormat("Entering Read");
         IDbConnection connection = DbUtils.GetConnection(_props);
@@ -150,7 +150,7 @@ public class ParticipantDbRepository : IParticipantRepository
         Log.InfoFormat("Updated {0} entities", result);
     }
 
-    public IEnumerable GetParticipantsByTeam(long teamId)
+    public IEnumerable<Participant> GetParticipantsByTeam(long teamId)
     {
         Log.InfoFormat("Entering GetParticipantsByTeam with value {0}", teamId);
         var connection = DbUtils.GetConnection(_props);
@@ -175,6 +175,50 @@ public class ParticipantDbRepository : IParticipantRepository
         }
         Log.InfoFormat("Exiting GetParticipantsByTeam with value {0}", participants);
         return participants;
+    }
+
+    public Participant GetParticipantByData(Participant participant)
+    {
+        Log.InfoFormat("Entering GetParticipantByData with value {0}", participant);
+        IDbConnection connection = DbUtils.GetConnection(_props);
+
+        using (var command = connection.CreateCommand())
+        {
+            command.CommandText = "SELECT id,firstname,lastname,engineCc,teamID FROM participants WHERE " +
+                                  "firstname=@firstname AND lastname=@lastname AND engineCc=@engineCc " +
+                                  "AND teamID=@teamID";
+            var firstname = command.CreateParameter();
+            firstname.ParameterName = "@firstname";
+            firstname.Value = participant.FirstName;
+            command.Parameters.Add(firstname);
+                
+            var lastname = command.CreateParameter();
+            lastname.ParameterName = "@lastname";
+            lastname.Value = participant.LastName;
+            command.Parameters.Add(lastname);
+                
+            var engineCc = command.CreateParameter();
+            engineCc.ParameterName = "@engineCc";
+            engineCc.Value = participant.EngineCapacity;
+            command.Parameters.Add(engineCc);
+                
+            var teamId = command.CreateParameter();
+            teamId.ParameterName = "@teamID";
+            teamId.Value = participant.TeamId;
+            command.Parameters.Add(teamId);
+
+            using (var dataReader = command.ExecuteReader())
+            {
+                if (dataReader.Read())
+                {
+                    Participant extracted = Extract(dataReader);
+                    Log.InfoFormat("Exiting GetParticipantByData with value {0}", extracted);
+                    return extracted;
+                }
+            }
+        }
+        Log.InfoFormat("Exiting GetParticipantByData with value {0}", null);
+        return null;
     }
 
     private static Participant Extract(IDataReader dataReader)

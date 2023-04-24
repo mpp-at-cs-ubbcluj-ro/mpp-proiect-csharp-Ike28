@@ -6,7 +6,7 @@ public interface IRepository<TId, TEntity> where TEntity : Model.Identifiable<TI
 {
     TEntity FindById(TId id);
 
-    IEnumerable FindAll();
+    IEnumerable<TEntity> FindAll();
 
     void Save(TEntity newEntity);
 

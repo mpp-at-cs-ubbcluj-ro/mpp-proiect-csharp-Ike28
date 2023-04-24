@@ -5,5 +5,7 @@ namespace Ubb.BikeContest.Repository;
 
 public interface IParticipantRepository : IRepository<long, Participant>
 {
-    IEnumerable GetParticipantsByTeam(long teamId);
+    IEnumerable<Participant> GetParticipantsByTeam(long teamId);
+
+    Participant GetParticipantByData(Participant participant);
 }

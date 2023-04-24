@@ -48,7 +48,7 @@ public class RaceEntryDbRepository : IRaceEntryRepository
         return null;
     }
 
-    public IEnumerable FindAll()
+    public IEnumerable<RaceEntry> FindAll()
     {
         Log.InfoFormat("Entering Read");
         var connection = DbUtils.GetConnection(_props);
@@ -112,7 +112,7 @@ public class RaceEntryDbRepository : IRaceEntryRepository
         throw new NotImplementedException();
     }
 
-    public IEnumerable GetEntriesByRace(long raceId)
+    public IEnumerable<RaceEntry> GetEntriesByRace(long raceId)
     {
         Log.InfoFormat("Entering GetEntriesByRace");
         var connection = DbUtils.GetConnection(_props);
@@ -138,7 +138,42 @@ public class RaceEntryDbRepository : IRaceEntryRepository
         Log.InfoFormat("Exiting GetEntriesByRace with value {0}", raceEntries);
         return raceEntries;
     }
-    
+
+    public IEnumerable<Race> GetRacesWhereNotRegisteredAndEngineCapacity(long participantId, int engineCapacity)
+    {
+        Log.InfoFormat("Entering GetRacesWhereNotRegisteredAndEngineCapacity with {0}, {1}",
+            participantId, engineCapacity);
+        var connection = DbUtils.GetConnection(_props);
+        IList<Race> result = new List<Race>();
+
+        using (var command = connection.CreateCommand())
+        {
+            command.CommandText = "SELECT * FROM races WHERE id NOT IN " +
+                                  "(SELECT raceID from race_entries WHERE participantID=@participantId)" +
+                                  " AND engineCc=@engineCc";
+            var paramParticipantId = command.CreateParameter();
+            paramParticipantId.ParameterName = "@participantId";
+            paramParticipantId.Value = participantId;
+            command.Parameters.Add(paramParticipantId);
+            
+            var paramEngine = command.CreateParameter();
+            paramEngine.ParameterName = "@engineCc";
+            paramEngine.Value = engineCapacity;
+            command.Parameters.Add(paramEngine);
+            
+            using (var dataReader = command.ExecuteReader())
+            {
+                while (dataReader.Read())
+                {
+                    Race race = ExtractRace(dataReader);
+                    result.Add(race);
+                }
+            }
+        }
+        Log.InfoFormat("Exiting GetRacesWhereNotRegisteredAndEngineCapacity with value {0}", result);
+        return result;
+    }
+
     private RaceEntry Extract(IDataReader dataReader)
     {
         var id = dataReader.GetInt64(0);
@@ -149,5 +184,18 @@ public class RaceEntryDbRepository : IRaceEntryRepository
         var race = _raceRepository.FindById(raceId);
         var raceEntry = new RaceEntry(participant, race);
         return raceEntry;
+    }
+    
+    private Race ExtractRace(IDataReader dataReader)
+    {
+        var id = dataReader.GetInt64(0);
+        var name = dataReader.GetString(1);
+        var engineCapacity = dataReader.GetInt32(2);
+
+        var race = new Race(name, engineCapacity)
+        {
+            Id = id
+        };
+        return race;
     }
 }

@@ -43,7 +43,7 @@ public class RaceDbRepository : IRaceRepository
         return null;
     }
 
-    public IEnumerable FindAll()
+    public IEnumerable<Race> FindAll()
     {
         Log.InfoFormat("Entering Read");
         var connection = DbUtils.GetConnection(_props);
@@ -153,6 +153,28 @@ public class RaceDbRepository : IRaceRepository
 
         Log.InfoFormat("Exiting GetRaceByName with value {0}", null);
         return null;
+    }
+
+    public IEnumerable<Race> GetRacesByEngineCapacity(int engineCapacity)
+    {
+        Log.InfoFormat("Entering GetRacesByEngineCapacity with value {0}", engineCapacity);
+        var connection = DbUtils.GetConnection(_props);
+        IList<Race> races = new List<Race>();
+
+        using (var command = connection.CreateCommand())
+        {
+            command.CommandText = "SELECT * FROM races WHERE engineCc=@engineCapacity";
+            using (var dataReader = command.ExecuteReader())
+            {
+                while (dataReader.Read())
+                {
+                    Race race = Extract(dataReader);
+                    races.Add(race);
+                }
+            }
+        }
+        Log.InfoFormat("Exiting GetRacesByEngineCapacity with value {0}", races);
+        return races;
     }
 
     private Race Extract(IDataReader dataReader)
