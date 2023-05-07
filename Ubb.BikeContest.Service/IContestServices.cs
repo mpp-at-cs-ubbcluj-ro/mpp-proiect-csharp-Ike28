@@ -15,5 +15,8 @@ namespace Ubb.BikeContest.Services
         IEnumerable<Team> FindAllTeams();
         IEnumerable<Participant> GetParticipantsByTeam(long id);
         IEnumerable<Participant> FindAllParticipants();
+        void SaveRaceEntry(RaceEntry newEntity);
+        void SaveParticipant(Participant newEntity);
+        IEnumerable<Race> GetRacesWhereNotRegisteredAndEngineCapacity(long participantId, int engineCapacity);
     }
 }

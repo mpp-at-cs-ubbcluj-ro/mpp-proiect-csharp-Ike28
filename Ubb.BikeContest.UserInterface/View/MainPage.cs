@@ -16,9 +16,9 @@ namespace Ubb.BikeContest.UserInterface
         {
             InitializeComponent();
             this.controller = controller;
-            //AddRaces();
-            //AddTeams();
-            //AddParticipants();
+            AddRaces();
+            AddTeams();
+            AddParticipants();
         }
 
         private void AddRaces()
@@ -77,7 +77,7 @@ namespace Ubb.BikeContest.UserInterface
 
         private void participantButton_Click(object sender, EventArgs e)
         {
-            controller.NewParticipant();
+            controller.OpenNewParticipantView();
             this.Hide();
         }
 
@@ -89,7 +89,7 @@ namespace Ubb.BikeContest.UserInterface
 
         private void registerButton_Click(object sender, EventArgs e)
         {
-            controller.RegisterToRace();
+            controller.OpenRegisterView();
             this.Hide();
         }
     }
