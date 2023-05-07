@@ -18,11 +18,11 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Ubb.BikeContest.UserInterface
 {
-    public partial class RegisterToRace : Form
+    public partial class RegisterToRaceView : Form
     {
         private readonly RegisterToRaceController controller;
 
-        public RegisterToRace(RegisterToRaceController controller)
+        public RegisterToRaceView(RegisterToRaceController controller)
         {
             InitializeComponent();
             this.controller = controller;
@@ -67,11 +67,12 @@ namespace Ubb.BikeContest.UserInterface
         {
             Participant participant = (Participant)participantBox.SelectedItem;
             System.Windows.Forms.ListView.SelectedListViewItemCollection races = raceView.SelectedItems;
+            List<RaceEntry> selectedRaceEntries = new List<RaceEntry>();
             foreach (ListViewItem race in races)
             {
-                controller.SaveRaceEntry(new RaceEntry(participant, (Race)race.Tag));
+                selectedRaceEntries.Add(new RaceEntry(participant, (Race)race.Tag));
             }
-            controller.OpenMainView();
+            controller.SaveRaceEntries(selectedRaceEntries);
             this.Hide();
         }
 

@@ -15,12 +15,12 @@ using Ubb.BikeContest.Services.src.Service;
 
 namespace Ubb.BikeContest.UserInterface
 {
-    public partial class NewParticipant : Form
+    public partial class NewParticipantView : Form
     {
 
         private readonly NewParticipantController controller;
 
-        public NewParticipant(NewParticipantController controller)
+        public NewParticipantView(NewParticipantController controller)
         {
             InitializeComponent();
             this.controller = controller;
@@ -45,13 +45,12 @@ namespace Ubb.BikeContest.UserInterface
                 Participant newParticipant = new Participant(firstname, lastname, engineCapacity);
                 newParticipant.TeamId = team.Id;
                 controller.SaveParticipant(newParticipant);
-                this.Hide();
             }
             else
             {
                 controller.OpenMainView();
-                this.Hide();
             }
+            this.Hide();
         }
     }
 }

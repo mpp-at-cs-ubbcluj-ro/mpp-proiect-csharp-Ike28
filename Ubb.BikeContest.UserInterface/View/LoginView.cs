@@ -8,11 +8,11 @@ using Ubb.BikeContest.Services.src.Service;
 
 namespace Ubb.BikeContest.UserInterface;
 
-public partial class LoginPage : Form
+public partial class LoginView : Form
 {
     private readonly LoginController controller;
 
-    public LoginPage(LoginController controller)
+    public LoginView(LoginController controller)
     {
         InitializeComponent();
         this.controller = controller;

@@ -8,15 +8,15 @@ using Ubb.BikeContest.Model;
 namespace Ubb.BikeContest.Networking.Response
 {
     [Serializable]
-    public class RacesByCapacityResponse : IResponse
+    public class UnregisteredRacesResponse : IResponse
     {
-        private readonly IEnumerable<Race> races;
+        private readonly List<Race> races;
 
-        public RacesByCapacityResponse(IEnumerable<Race> races)
+        public UnregisteredRacesResponse(List<Race> races)
         {
             this.races = races;
         }
 
-        public IEnumerable<Race> Races { get { return races; } }
+        public List<Race> Races { get { return races; } }
     }
 }

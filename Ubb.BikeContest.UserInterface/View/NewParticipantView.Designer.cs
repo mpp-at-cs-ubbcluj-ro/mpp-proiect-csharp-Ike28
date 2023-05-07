@@ -1,6 +1,6 @@
 ﻿namespace Ubb.BikeContest.UserInterface
 {
-    partial class NewParticipant
+    partial class NewParticipantView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewParticipant));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewParticipantView));
             label1 = new Label();
             firstnameField = new TextBox();
             lastnameField = new TextBox();

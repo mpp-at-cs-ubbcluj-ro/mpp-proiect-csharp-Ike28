@@ -1,6 +1,6 @@
 ﻿namespace Ubb.BikeContest.UserInterface;
 
-partial class LoginPage
+partial class LoginView
 {
     /// <summary>
     ///  Required designer variable.
@@ -29,7 +29,7 @@ partial class LoginPage
     /// </summary>
     private void InitializeComponent()
     {
-        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginPage));
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginView));
         usernameBox = new TextBox();
         passwordBox = new TextBox();
         button1 = new Button();

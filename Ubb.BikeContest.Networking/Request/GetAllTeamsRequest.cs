@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace Ubb.BikeContest.Networking.Request
 {
     [Serializable]
-    public class GetParticipantsRequest : IRequest
+    public class GetAllTeamsRequest : IRequest
     {
-        public GetParticipantsRequest() { }
+        public GetAllTeamsRequest() { }
     }
 }

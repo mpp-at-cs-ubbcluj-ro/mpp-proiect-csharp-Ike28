@@ -1,6 +1,6 @@
 ﻿namespace Ubb.BikeContest.UserInterface
 {
-    partial class RegisterToRace
+    partial class RegisterToRaceView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterToRace));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterToRaceView));
             participantBox = new ComboBox();
             label1 = new Label();
             raceView = new ListView();

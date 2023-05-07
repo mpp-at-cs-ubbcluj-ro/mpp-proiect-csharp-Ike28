@@ -8,17 +8,38 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Ubb.BikeContest.UserInterface
 {
-    public partial class MainPage : Form
+    public partial class MainView : Form
     {
         private readonly MainController controller;
 
-        public MainPage(MainController controller)
+        public MainView(MainController controller)
         {
             InitializeComponent();
+            controller.updateEvent += UserUpdate;
             this.controller = controller;
             AddRaces();
             AddTeams();
             AddParticipants();
+        }
+
+        public void UserUpdate(object sender, UserEventArgs eventArgs)
+        {
+            if (eventArgs.UserEventType == UserEvent.NEW_PARTICIPANT)
+            {
+                Participant? participant = eventArgs.Data as Participant;
+                if (participant != null)
+                {
+                    teamBox.BeginInvoke(new UpdateParticipantsCallback(UpdateParticipants), new Object[] { participant });
+                }
+            }
+            if (eventArgs.UserEventType == UserEvent.RACES_MODIFIED)
+            {
+                IEnumerable<RaceDto>? races = eventArgs.Data as IEnumerable<RaceDto>;
+                if (races != null)
+                {
+                    raceList.BeginInvoke(new UpdateRacesCallback(this.UpdateRaces), new Object[] { races });
+                }
+            }
         }
 
         private void AddRaces()
@@ -36,6 +57,32 @@ namespace Ubb.BikeContest.UserInterface
                 raceList.Items.Add(Name + ", " + raceDto.Participants + " participants");
             }
         }
+
+        private void UpdateRaces(IEnumerable<RaceDto> races)
+        {
+            raceList.Items.Clear();
+            foreach (RaceDto raceDto in races)
+            {
+                string Name = raceDto.Name;
+                if (Name.Length > 40)
+                {
+                    Name = Name[..40] + "...";
+                }
+                raceList.Items.Add(Name + ", " + raceDto.Participants + " participants");
+            }
+        }
+
+        public delegate void UpdateRacesCallback(IEnumerable<RaceDto> races);
+
+        private void UpdateParticipants(Participant participant)
+        {
+            if (((Team)teamBox.SelectedItem).Id == participant.Id)
+            {
+                teamBox.Items.Add(participant);
+            }
+        }
+
+        public delegate void UpdateParticipantsCallback(Participant participant);
 
         private void AddTeams()
         {

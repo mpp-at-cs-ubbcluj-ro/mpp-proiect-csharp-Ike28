@@ -1,6 +1,6 @@
 ﻿namespace Ubb.BikeContest.UserInterface
 {
-    partial class MainPage
+    partial class MainView
     {
         /// <summary>
         /// Required designer variable.

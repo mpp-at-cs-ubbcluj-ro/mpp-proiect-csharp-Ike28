@@ -8,9 +8,6 @@ namespace Ubb.BikeContest.UserInterface;
 
 static class StartClient
 {
-    /// <summary>
-    ///  The main entry point for the application.
-    /// </summary>
     [STAThread]
     static void Main()
     {
@@ -20,6 +17,6 @@ static class StartClient
 
         IContestServices server = new ServicesProxy("127.0.0.1", 55556);
         LoginController loginController = new LoginController(server);
-        Application.Run(new LoginPage(loginController));
+        Application.Run(new LoginView(loginController));
     }
 }
