@@ -21,8 +21,8 @@ public partial class LoginView : Form
     private void button1_Click(object sender, EventArgs e)
     {
         string username = usernameBox.Text;
-        string passwordToken = Hasher.hash(passwordBox.Text);
-        controller.Login(username, "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918");
+        string passwordToken = Hasher.Hash(passwordBox.Text);
+        controller.Login(username, passwordToken);
         this.Hide();
     }
 
