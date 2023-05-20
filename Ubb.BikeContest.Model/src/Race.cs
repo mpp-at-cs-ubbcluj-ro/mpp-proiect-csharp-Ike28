@@ -1,5 +1,6 @@
 ﻿namespace Ubb.BikeContest.Model;
 
+[Serializable]
 public class Race : Identifiable<long>
 {
     public Race(string name, int engineCapacity)

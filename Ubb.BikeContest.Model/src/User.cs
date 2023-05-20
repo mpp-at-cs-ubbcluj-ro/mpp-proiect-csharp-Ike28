@@ -1,5 +1,6 @@
 ﻿namespace Ubb.BikeContest.Model;
 
+[Serializable]
 public class User : Identifiable<long>
 {
     public User(string username, string fullName, string password)

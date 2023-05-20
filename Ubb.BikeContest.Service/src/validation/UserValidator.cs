@@ -1,6 +1,6 @@
 ﻿using Ubb.BikeContest.Model;
 
-namespace Ubb.BikeContest.Service.validation;
+namespace Ubb.BikeContest.Services.validation;
 
 public class UserValidator : IValidator<long, User>
 {

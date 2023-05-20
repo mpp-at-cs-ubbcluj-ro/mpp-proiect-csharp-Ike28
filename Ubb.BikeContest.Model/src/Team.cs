@@ -1,5 +1,6 @@
 ﻿namespace Ubb.BikeContest.Model;
 
+[Serializable]
 public class Team : Identifiable<long>
 {
     public Team(string name)

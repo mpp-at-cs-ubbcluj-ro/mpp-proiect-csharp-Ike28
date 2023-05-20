@@ -1,5 +1,6 @@
 ﻿namespace Ubb.BikeContest.Model;
 
+[Serializable]
 public class RaceEntry : Identifiable<long>
 {
     private readonly Race _race;

@@ -13,5 +13,17 @@
     <Compile Update="src\RegisterToRace.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\LoginView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\MainView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\NewParticipantView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\RegisterToRaceView.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

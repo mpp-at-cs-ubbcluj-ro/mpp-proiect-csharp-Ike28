@@ -5,3 +5,11 @@ Ubb.BikeContest.Model/obj
 Ubb.BikeContest.Repository/bin
 Ubb.BikeContest.Repository/obj
 bikeContest.sqlite
+Ubb.BikeContest.Networking/bin
+Ubb.BikeContest.Networking/obj
+Ubb.BikeContest.Server/bin
+Ubb.BikeContest.Server/obj
+Ubb.BikeContest.Service/bin
+Ubb.BikeContest.Service/obj
+Ubb.BikeContest.UserInterface/bin
+Ubb.BikeContest.UserInterface/obj
