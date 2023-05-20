@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Ubb.BikeContest.Model;
 
-namespace Ubb.BikeContest.Networking.Response
+namespace Ubb.BikeContest.Networking.Protocol.Response
 {
     [Serializable]
     public class AllParticipantsResponse : IResponse

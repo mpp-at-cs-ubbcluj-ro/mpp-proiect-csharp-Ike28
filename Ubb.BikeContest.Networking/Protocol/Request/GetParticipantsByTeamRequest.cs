@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ubb.BikeContest.Networking.Request
+namespace Ubb.BikeContest.Networking.Protocol.Request
 {
     [Serializable]
     public class GetParticipantsByTeamRequest : IRequest
@@ -16,6 +16,6 @@ namespace Ubb.BikeContest.Networking.Request
             this.teamId = teamId;
         }
 
-        public long TeamId { get {  return this.teamId; } }
+        public long TeamId { get { return teamId; } }
     }
 }

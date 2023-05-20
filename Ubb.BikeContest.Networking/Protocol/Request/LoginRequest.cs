@@ -1,6 +1,6 @@
 using System;
 
-namespace Ubb.BikeContest.Networking.Request.Request
+namespace Ubb.BikeContest.Networking.Protocol.Request
 {
 
     [Serializable]

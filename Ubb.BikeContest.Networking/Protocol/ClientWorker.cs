@@ -8,14 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Ubb.BikeContest.Model;
 using Ubb.BikeContest.Model.data;
-using Ubb.BikeContest.Networking.Request;
-using Ubb.BikeContest.Networking.Request.Request;
-using Ubb.BikeContest.Networking.Response;
-using Ubb.BikeContest.Networking.Response.Response;
+using Ubb.BikeContest.Networking.Protocol.Request;
+using Ubb.BikeContest.Networking.Protocol.Response;
 using Ubb.BikeContest.Services;
 using Ubb.BikeContest.Services.src.Exceptions;
 
-namespace Ubb.BikeContest.Networking
+namespace Ubb.BikeContest.Networking.Protocol
 {
     public class ClientWorker : IMainObserver
     {
@@ -130,7 +128,7 @@ namespace Ubb.BikeContest.Networking
             if (request is LogoutRequest)
             {
                 Console.WriteLine("Logout request");
-                LogoutRequest logoutRequest = (LogoutRequest)request;   
+                LogoutRequest logoutRequest = (LogoutRequest)request;
                 try
                 {
                     lock (server)

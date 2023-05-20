@@ -1,7 +1,7 @@
 using System;
 using Ubb.BikeContest.Model;
 
-namespace Ubb.BikeContest.Networking.Request.Request
+namespace Ubb.BikeContest.Networking.Protocol.Request
 {
     [Serializable]
     public class LogoutRequest : IRequest

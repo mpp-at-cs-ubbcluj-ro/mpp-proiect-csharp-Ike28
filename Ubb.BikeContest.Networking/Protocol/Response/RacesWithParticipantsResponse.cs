@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Ubb.BikeContest.Model.data;
 
-namespace Ubb.BikeContest.Networking.Response
+namespace Ubb.BikeContest.Networking.Protocol.Response
 {
     [Serializable]
-    public class UpdatedRacesResponse : UpdateResponse
+    public class RacesWithParticipantsResponse : IResponse
     {
         private readonly List<RaceDto> races;
 
-        public UpdatedRacesResponse(List<RaceDto> races)
+        public RacesWithParticipantsResponse(List<RaceDto> races)
         {
             this.races = races;
         }

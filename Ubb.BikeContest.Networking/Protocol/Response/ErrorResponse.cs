@@ -1,6 +1,6 @@
 using System;
 
-namespace Ubb.BikeContest.Networking.Response.Response
+namespace Ubb.BikeContest.Networking.Protocol.Response
 {
     [Serializable]
     public class ErrorResponse : IResponse

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using Ubb.BikeContest.Model;
 using Ubb.BikeContest.Repository;
-using Ubb.BikeContest.Service.validation;
+using Ubb.BikeContest.Services.validation;
 
 namespace Ubb.BikeContest.Service;
 

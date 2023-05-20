@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ubb.BikeContest.Networking.Request
+namespace Ubb.BikeContest.Networking.Protocol.Request
 {
     [Serializable]
     public class GetUnregisteredRacesRequest : IRequest
@@ -20,6 +20,6 @@ namespace Ubb.BikeContest.Networking.Request
 
         public virtual long ParticipantId { get { return participantId; } }
 
-        public virtual int EngineCapacity { get {  return engineCapacity; } }
+        public virtual int EngineCapacity { get { return engineCapacity; } }
     }
 }

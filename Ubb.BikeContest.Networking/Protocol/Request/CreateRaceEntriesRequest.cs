@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Ubb.BikeContest.Model;
 
-namespace Ubb.BikeContest.Networking.Request
+namespace Ubb.BikeContest.Networking.Protocol.Request
 {
     [Serializable]
     public class CreateRaceEntriesRequest : IRequest

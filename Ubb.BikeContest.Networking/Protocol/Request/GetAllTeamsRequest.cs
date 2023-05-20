@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ubb.BikeContest.Networking.Request
+namespace Ubb.BikeContest.Networking.Protocol.Request
 {
     [Serializable]
-    public class GetAllParticipantsRequest : IRequest
+    public class GetAllTeamsRequest : IRequest
     {
-        public GetAllParticipantsRequest() { }
+        public GetAllTeamsRequest() { }
     }
 }
