@@ -1,5 +1,5 @@
 ﻿using System.Net.Sockets;
-using Ubb.BikeContest.Networking;
+using Ubb.BikeContest.Networking.Protocol;
 
 namespace Ubb.BikeContest.Services
 {
